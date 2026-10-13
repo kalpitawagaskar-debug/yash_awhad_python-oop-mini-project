@@ -4,15 +4,35 @@ This guide provides step-by-step instructions to deploy the **EV Battery Thermal
 
 ---
 
-## 📋 Overview & Prerequisites
+## 📋 Overview & Architecture
 
-- **Framework**: Streamlit (`ev_thermal_dashboard_app.py`)
-- **Dataset**: `ev_battery_failure_dataset (1).csv` (~77.2 MB, 200,000 records)
-- **Configuration**: Headless mode and dark styling are pre-configured in `.streamlit/config.toml`.
+- **Static Web App (Vercel-Ready)**: `index.html` (interactive HTML5/JS dashboard with Chart.js, embedded telemetry, and animations).
+- **Python Streamlit App**: `ev_thermal_dashboard_app.py` (Streamlit + Plotly application).
+- **Dataset**: `ev_battery_failure_dataset (1).csv` (~77.2 MB, 200,000 records).
 
 ---
 
-## 🚀 Option 1: Streamlit Community Cloud (Recommended & 100% Free)
+## ⚡ Option 1: Deploy to Vercel (Instant 1-Click Static Deployment)
+
+Vercel is a global Serverless & Edge network. It natively serves the interactive dashboard via `index.html` with zero build times, instant load speed, and 100% free hosting.
+
+> **Note on Streamlit vs. Vercel**: Vercel does not host persistent Python servers or long-lived WebSockets required by Streamlit. Instead, Vercel deploys the **standalone interactive frontend dashboard** (`index.html`), which contains all telemetry, charts, animations, and filtering without needing a Python backend.
+
+### How to Deploy on Vercel:
+1. Log in to [vercel.com](https://vercel.com/) with your GitHub account (`yashawhad45`).
+2. Click **"Add New..."** > **"Project"**.
+3. Under *Import Git Repository*, find and select **`ev-battery-thermal-dashboard`**.
+4. Leave all settings at default:
+   - **Framework Preset**: `Other`
+   - **Root Directory**: `./`
+   - **Build Command**: *(leave empty)*
+   - **Output Directory**: *(leave empty)*
+5. Click **"Deploy"**.
+6. In ~15 seconds, your dashboard will be live at `https://ev-battery-thermal-dashboard-*.vercel.app`.
+
+---
+
+## 🚀 Option 2: Streamlit Community Cloud (Free Streamlit Python Hosting)
 
 Streamlit Community Cloud is the fastest, free method to host your application directly from a GitHub repository.
 
